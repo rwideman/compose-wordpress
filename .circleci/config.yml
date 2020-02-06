@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: mysql:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: somewordpress
+          MYSQL_DATABASE: wordpress
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: wordpress
+      - image: wordpress:latest
+        environment:
+          WORDPRESS_DB_HOST: db:3306
+          WORDPRESS_DB_USER: wordpress
+          WORDPRESS_DB_PASSWORD: wordpress
+          WORDPRESS_DB_NAME: wordpress
+    steps:
+      - checkout
+      - run: mkdir cool-reports
+      - run:
+          name: Do cool stuff
+          command: |
+            echo -e "this is cool stuff"
+      - run:
+          name: Mo cool stuff
+          command: |
+            echo -e "this is still cool stuff"
+      - run:
+          name: Enough cool stuff
+          command: |
+            echo -e "this is enough cool stuff"
